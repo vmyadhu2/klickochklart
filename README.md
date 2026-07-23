@@ -1,2 +1,31 @@
-# klickochklart
-Frontend code for company website
+# Klick och Klart Website
+
+Static one-page website for Klick och Klart, focused on small Fortnox automation pilots and the future SaaS direction.
+
+## Files
+
+- `index.html` - page structure and content
+- `style.css` - layout, responsive design, and styling
+- `script.js` - mobile navigation and scroll animations
+- `icon.svg` - company icon and favicon
+
+## Publish with GitHub Pages
+
+1. Copy these files into the root of the `klickochklart` repository.
+2. Commit and push them to the `main` branch.
+3. Open repository Settings > Pages.
+4. Select `Deploy from a branch`.
+5. Select `main` and `/(root)`.
+6. Add `klickochklart.se` as the custom domain.
+
+## Contact form
+
+The form currently submits through FormSubmit to:
+
+`hello@klickochklart.se`
+
+Change the email in the form action inside `index.html` if necessary.
+
+## Positioning
+
+The page intentionally presents Klick och Klart as an independent automation service starting with narrow Fortnox-related pilot projects. The copy avoids claiming deep Fortnox expertise and frames the Python backend/SaaS product as the planned direction after real workflow validation.
