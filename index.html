@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Klick och Klart builds small, practical Fortnox automations that help Swedish businesses reduce repeated admin work." />
+  <meta name="theme-color" content="#0e3b43" />
+  <title>Klick och Klart | Fortnox Automation Pilots</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Klick och Klart home">
+        <img class="brand-icon" src="icon.svg" alt="" width="40" height="40" />
+        <span>Klick och Klart</span>
+      </a>
+
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="sr-only">Open navigation</span>
+      </button>
+
+      <nav id="main-navigation" class="main-nav" aria-label="Main navigation">
+        <a href="#offer">Offer</a>
+        <a href="#automations">Automations</a>
+        <a href="#about">About</a>
+        <a class="nav-cta" href="#contact">Pilot project</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Small Fortnox automations first. SaaS later.</p>
+          <h1>Turn repeated Fortnox admin into simple automated flows.</h1>
+          <p class="hero-text">
+            Klick och Klart helps small businesses find one painful manual routine, automate it carefully,
+            and use those lessons to build a focused Fortnox automation platform over time.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contact">Discuss a pilot</a>
+            <a class="button button-secondary" href="#automations">See automation ideas</a>
+          </div>
+          <div class="hero-notes" aria-label="Service highlights">
+            <span>Invoice workflows</span>
+            <span>Reports</span>
+            <span>CSV and files</span>
+            <span>Python backend planned</span>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Example automation flow">
+          <div class="workflow-board">
+            <div class="workflow-top">
+              <span class="status-dot"></span>
+              <span>Automation pilot</span>
+            </div>
+            <div class="flow-line">
+              <div class="flow-step active">
+                <small>1</small>
+                <strong>Read</strong>
+                <span>Fortnox data</span>
+              </div>
+              <div class="flow-step">
+                <small>2</small>
+                <strong>Check</strong>
+                <span>Rules and gaps</span>
+              </div>
+              <div class="flow-step">
+                <small>3</small>
+                <strong>Send</strong>
+                <span>Report or update</span>
+              </div>
+            </div>
+            <div class="task-list">
+              <div><span></span> Export unpaid invoices every Monday</div>
+              <div><span></span> Flag missing customer references</div>
+              <div><span></span> Prepare bookkeeping summary</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="offer" class="section section-muted">
+      <div class="container split-grid">
+        <div class="section-heading reveal">
+          <p class="eyebrow">The approach</p>
+          <h2>Start with one useful automation, not a giant system.</h2>
+          <p>
+            The first goal is to learn from real workflows: what takes time, what data is reliable,
+            and where automation can safely remove repetitive work.
+          </p>
+        </div>
+
+        <div class="principles reveal">
+          <div>
+            <strong>1. Pick a narrow task</strong>
+            <span>Choose one recurring Fortnox-related routine with a clear before and after.</span>
+          </div>
+          <div>
+            <strong>2. Build a pilot</strong>
+            <span>Create a small automation using scripts, APIs, files, or lightweight dashboards.</span>
+          </div>
+          <div>
+            <strong>3. Productize what repeats</strong>
+            <span>Turn repeated patterns into a backend service and later a SaaS product.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="automations" class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Automation ideas</p>
+          <h2>Useful places to begin.</h2>
+          <p>
+            These are practical starting points for businesses already using Fortnox and spending too much time on repeated admin.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="service-card reveal">
+            <div class="icon-box">INV</div>
+            <h3>Invoice checks</h3>
+            <p>Find unpaid invoices, missing references, overdue customers, or cases that need a reminder before they become noise.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon-box">REP</div>
+            <h3>Recurring reports</h3>
+            <p>Generate weekly summaries from Fortnox data and send them by email, spreadsheet, or a simple web view.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon-box">CSV</div>
+            <h3>File cleanup</h3>
+            <p>Transform CSV or Excel exports, validate fields, and prepare structured files for accounting or operations.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon-box">SYNC</div>
+            <h3>Data sync support</h3>
+            <p>Move selected data between Fortnox and other tools when manual copying is slow, fragile, or easy to forget.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section section-dark">
+      <div class="container about-grid">
+        <div class="section-heading reveal">
+          <p class="eyebrow">About us</p>
+          <h2>Fewer complicated steps. More things getting done.</h2>
+        </div>
+
+        <div class="about-copy reveal">
+          <p>
+            Klick och Klart helps small businesses in Sweden save time by automating everyday work in Fortnox.
+          </p>
+          <p>
+            Many business owners spend hours on repetitive administration, such as handling invoices, updating customer information,
+            preparing reports, and moving data between different systems. We create practical automation solutions that make these
+            tasks faster, simpler, and less prone to errors.
+          </p>
+          <p>
+            Our services are designed for the way your business actually works. Whether you run a consultancy, shop, service company,
+            or growing small business, we build solutions that fit your routines and connect smoothly with Fortnox.
+          </p>
+          <p>
+            The goal is simple: less manual administration, better control, and more time to focus on your customers and your business.
+          </p>
+          <p>
+            Klick och Klart means exactly that: fewer complicated steps and more things getting done.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+      <div class="container contact-card reveal">
+        <div>
+          <p class="eyebrow">Pilot project</p>
+          <h2>Have one Fortnox routine that should be easier?</h2>
+          <p>
+            Send a short description of the repeated task, how often it happens, and what the ideal result would look like.
+          </p>
+          <p class="independent-note">
+            Klick och Klart is an independent automation service and is not affiliated with Fortnox.
+          </p>
+        </div>
+
+        <form class="contact-form" action="https://formsubmit.co/hello@klickochklart.se" method="POST">
+          <input type="hidden" name="_subject" value="New Fortnox automation enquiry from klickochklart.se" />
+          <input type="hidden" name="_captcha" value="false" />
+
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+
+          <label>
+            Repeated task
+            <textarea name="message" rows="5" placeholder="Example: Every Friday I export invoices, check overdue payments, and email a summary..." required></textarea>
+          </label>
+
+          <button class="button button-primary" type="submit">Send pilot idea</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <div class="brand footer-brand">
+        <img class="brand-icon" src="icon.svg" alt="" width="40" height="40" />
+        <span>Klick och Klart</span>
+      </div>
+      <p>&copy; <span id="current-year"></span> Klick och Klart. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
