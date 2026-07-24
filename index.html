@@ -30,9 +30,20 @@
       <nav id="main-navigation" class="main-nav" aria-label="Main navigation">
         <a href="#offer">Offer</a>
         <a href="#automations">Automations</a>
+        <a href="#connect">Connect</a>
         <a href="#about">About</a>
         <a class="nav-cta" href="#contact">Automation request</a>
       </nav>
+
+      <div id="account-menu" class="account-menu" hidden>
+        <button id="account-menu-button" class="account-menu-button" type="button" aria-expanded="false" aria-controls="account-menu-panel">
+          <span id="account-menu-initial">K</span>
+        </button>
+        <div id="account-menu-panel" class="account-menu-panel" hidden>
+          <a href="profile-settings.html">Profile settings</a>
+          <button id="account-sign-out-button" type="button">Sign out</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -47,7 +58,7 @@
             and use those lessons to build a focused Fortnox automation platform over time.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#contact">Discuss an automation</a>
+            <a class="button button-primary" href="#connect">Connect Fortnox</a>
             <a class="button button-secondary" href="#automations">See automation ideas</a>
           </div>
           <div class="hero-notes" aria-label="Service highlights">
@@ -161,6 +172,65 @@
       </div>
     </section>
 
+    <section id="connect" class="section section-dark">
+      <div class="container connect-grid">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Connect Fortnox</p>
+          <h2>Create an account and connect your Fortnox company.</h2>
+          <p>
+            Sign up or sign in to Klick och Klart, then approve the Fortnox connection. Your Fortnox tokens are stored against your account in the backend.
+          </p>
+          <p class="connect-note">
+            The connection is the first step. Automation features will be added after the Fortnox account link is working reliably.
+          </p>
+        </div>
+
+        <div class="connect-card reveal">
+          <div class="auth-tabs" role="tablist" aria-label="Account action">
+            <button class="auth-tab active" type="button" data-auth-mode="signup">Create account</button>
+            <button class="auth-tab" type="button" data-auth-mode="signin">Sign in</button>
+          </div>
+
+          <form id="signup-form" class="auth-form" data-auth-form="signup">
+            <label>
+              Email
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+            <label>
+              Password
+              <input type="password" name="password" autocomplete="new-password" minlength="8" required />
+            </label>
+            <label>
+              Verify password
+              <input type="password" name="confirm_password" autocomplete="new-password" minlength="8" required />
+            </label>
+            <button class="button button-primary" type="submit">Create account</button>
+            <p class="auth-help">After creating your account, check your email and click the verification link before signing in.</p>
+          </form>
+
+          <form id="signin-form" class="auth-form" data-auth-form="signin" hidden>
+            <label>
+              Email
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+            <label>
+              Password
+              <input type="password" name="password" autocomplete="current-password" minlength="8" required />
+            </label>
+            <button class="button button-primary" type="submit">Sign in</button>
+            <a class="text-button" href="reset-password.html">Forgot password?</a>
+          </form>
+
+          <div id="connect-panel" class="connection-panel" hidden>
+            <button id="connect-fortnox-button" class="button button-primary" type="button">Connect Fortnox</button>
+            <p id="fortnox-connected-message" class="connected-message" hidden>Fortnox is connected for this account.</p>
+          </div>
+
+          <p id="auth-status" class="auth-status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
     <section id="about" class="section section-dark">
       <div class="container about-grid">
         <div class="section-heading reveal">
@@ -239,6 +309,9 @@
     </div>
   </footer>
 
-  <script src="script.js?v=2"></script>
+  <script>
+    window.KOK_API_BASE = "http://localhost:3000";
+  </script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>

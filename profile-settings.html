@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Manage your Klick och Klart account profile." />
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#0e3b43" />
+  <title>Klick och Klart | Profile Settings</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="auth-page">
+  <main class="auth-page-shell">
+    <section class="connect-card reset-page-card profile-page-card">
+      <a class="brand" href="index.html#connect" aria-label="Klick och Klart home">
+        <img class="brand-icon" src="icon.svg" alt="" width="40" height="40" />
+        <span>Klick och Klart</span>
+      </a>
+
+      <div class="reset-heading page-reset-heading">
+        <strong>Profile settings</strong>
+        <span>Manage your Klick och Klart account.</span>
+      </div>
+
+      <dl class="profile-details">
+        <div>
+          <dt>Email</dt>
+          <dd id="profile-email">Loading...</dd>
+        </div>
+        <div>
+          <dt>User ID</dt>
+          <dd id="profile-user-id">Loading...</dd>
+        </div>
+      </dl>
+
+      <div class="profile-actions">
+        <button id="profile-change-password-button" class="button button-primary" type="button">Change password</button>
+        <button id="profile-delete-button" class="button danger-button" type="button">Delete profile</button>
+      </div>
+
+      <a class="text-button" href="index.html#connect">Back to Klick och Klart</a>
+      <p id="profile-status" class="auth-status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script>
+    window.KOK_API_BASE = "http://localhost:3000";
+  </script>
+  <script src="profile-settings.js?v=1"></script>
+</body>
+</html>
