@@ -297,6 +297,29 @@ h3 {
   font-weight: 600;
 }
 
+.fortnox-mark {
+  display: grid;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 18px;
+  background: #f7f8f4;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+
+.fortnox-mark span {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.fortnox-mark img {
+  width: min(100%, 220px);
+  height: auto;
+  display: block;
+}
+
 .status-dot {
   width: 9px;
   height: 9px;

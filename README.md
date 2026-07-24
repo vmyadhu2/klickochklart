@@ -1,6 +1,6 @@
 # Klick och Klart Website
 
-Static one-page website for Klick och Klart, focused on small Fortnox automation pilots and the future SaaS direction.
+Static one-page website for Klick och Klart, focused on small Fortnox automation services and the future SaaS direction.
 
 ## Files
 
@@ -28,4 +28,4 @@ FormSubmit may require a one-time activation from the destination email address 
 
 ## Positioning
 
-The page intentionally presents Klick och Klart as an independent automation service starting with narrow Fortnox-related pilot projects. The copy avoids claiming deep Fortnox expertise and frames the Python backend/SaaS product as the planned direction after real workflow validation.
+The page intentionally presents Klick och Klart as an independent automation service starting with narrow Fortnox-related automation projects. The copy avoids claiming deep Fortnox expertise and frames the Python backend/SaaS product as the planned direction after real workflow validation.
