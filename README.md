@@ -22,7 +22,7 @@ Static one-page website for Klick och Klart, focused on small Fortnox automation
 
 The form opens a pre-filled email to:
 
-`hello@klickochklart.se`
+`yadhukrishnan@klickochklart.se`
 
 Change the email in the form action and `data-contact-email` inside `index.html` if necessary.
 
