@@ -22,7 +22,7 @@ Static one-page website for Klick och Klart, focused on small Fortnox automation
 
 The form currently submits through FormSubmit to:
 
-`hello@klickochklart.se`
+`yadhukrishnan@klickochklart.se`
 
 Change the email in the form action inside `index.html` if necessary.
 
