@@ -8,6 +8,8 @@ Static one-page website for Klick och Klart, focused on small Fortnox automation
 - `style.css` - layout, responsive design, and styling
 - `script.js` - mobile navigation and scroll animations
 - `icon.svg` - company icon and favicon
+- `sitemap.xml` - search engine sitemap for `https://klickochklart.se/`
+- `robots.txt` - crawler rules and sitemap location
 
 ## Publish with GitHub Pages
 
