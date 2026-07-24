@@ -20,11 +20,11 @@ Static one-page website for Klick och Klart, focused on small Fortnox automation
 
 ## Contact form
 
-The form opens a pre-filled email to:
+The form submits through FormSubmit to:
 
 `yadhukrishnan@klickochklart.se`
 
-Change the email in the form action and `data-contact-email` inside `index.html` if necessary.
+FormSubmit may require a one-time activation from the destination email address before messages are forwarded.
 
 ## Positioning
 
