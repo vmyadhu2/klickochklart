@@ -266,6 +266,29 @@ html.has-session .signed-in-only {
   color: var(--muted);
 }
 
+.demo-down-button {
+  width: 40px;
+  height: 40px;
+  display: inline-grid;
+  place-items: center;
+  margin-top: 6px;
+  color: #ffffff;
+  background: var(--primary-dark);
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.demo-down-button:hover,
+.demo-down-button:focus-visible {
+  color: #ffffff;
+  background: var(--primary);
+  box-shadow: 0 12px 24px rgba(14, 118, 109, 0.24);
+  transform: translateY(2px);
+}
+
 .demo-workspace-section {
   background: #ffffff;
 }
