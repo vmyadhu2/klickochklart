@@ -269,7 +269,7 @@ if (signinForm) {
       });
       localStorage.setItem(tokenStorageKey, auth.access_token);
       signinForm.reset();
-      window.location.href = `${window.location.pathname}?auth=signed-in#connect`;
+      window.location.href = `${window.location.pathname}?auth=signed-in`;
     } catch (error) {
       setAuthStatus(error.message);
     }
@@ -301,7 +301,7 @@ async function initializeAuthPage() {
 
   if (authResult === 'signed-in') {
     await refreshAccountState();
-    window.history.replaceState({}, document.title, window.location.pathname + '#connect');
+    window.history.replaceState({}, document.title, window.location.pathname);
   } else if (fortnoxResult === 'connected') {
     await refreshAccountState();
     setAuthStatus('Fortnox connected successfully.');

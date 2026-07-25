@@ -22,10 +22,18 @@
       </a>
 
       <nav class="main-nav demo-nav" aria-label="Demo navigation">
-        <a href="index.html#automations">Automations</a>
-        <a href="profile-settings.html">Profile settings</a>
-        <a class="nav-cta" href="index.html#contact">Automation request</a>
+        <a class="nav-cta" href="index.html">Home</a>
       </nav>
+
+      <div id="account-menu" class="account-menu" hidden>
+        <button id="account-menu-button" class="account-menu-button" type="button" aria-expanded="false" aria-controls="account-menu-panel">
+          <span id="account-menu-initial">K</span>
+        </button>
+        <div id="account-menu-panel" class="account-menu-panel" hidden>
+          <a href="profile-settings.html">Profile settings</a>
+          <button id="account-sign-out-button" type="button">Sign out</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -38,10 +46,10 @@
           <p class="hero-text">Connect Fortnox, read invoice data, and download a ready CSV for the first 50 customer invoices.</p>
         </div>
 
-        <div class="demo-status-panel">
-          <span>Automation scope</span>
-          <strong>50 invoices max</strong>
-          <p>Invoice number, OCR, customer, dates, totals, balance, currency, and paid status.</p>
+        <div class="demo-status-panel demo-welcome-panel">
+          <strong>Welcome to the Demo! 👋</strong>
+          <p>Thanks for trying Klick &amp; Klart. In the next few moments, you'll see how your Fortnox data can be transformed into a simple automation workflow, saving time and reducing repetitive manual work.</p>
+          <p>Connect your Fortnox account and experience your first automation ⬇️.</p>
         </div>
       </div>
     </section>
@@ -80,6 +88,6 @@
   <script>
     window.KOK_API_BASE = "https://klickochklart-backend.onrender.com";
   </script>
-  <script src="fortnox-demo.js?v=3"></script>
+  <script src="fortnox-demo.js?v=4"></script>
 </body>
 </html>

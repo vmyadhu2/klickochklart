@@ -1146,7 +1146,18 @@ h3 {
   }
 
   .demo-nav {
-    display: none;
+    position: static;
+    min-height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    background: transparent;
+  }
+
+  .demo-nav a {
+    padding: 10px 14px;
+    border-bottom: 0;
   }
 
   .main-nav a {

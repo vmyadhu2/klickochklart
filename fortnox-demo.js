@@ -7,6 +7,11 @@ const downloadLink = document.getElementById('demo-download-link');
 const demoLog = document.getElementById('demo-log');
 const demoStatus = document.getElementById('demo-status');
 const connectionLabel = document.getElementById('demo-connection-label');
+const accountMenu = document.getElementById('account-menu');
+const accountMenuButton = document.getElementById('account-menu-button');
+const accountMenuPanel = document.getElementById('account-menu-panel');
+const accountMenuInitial = document.getElementById('account-menu-initial');
+const accountSignOutButton = document.getElementById('account-sign-out-button');
 
 function setDemoStatus(message) {
   demoStatus.textContent = message;
@@ -25,6 +30,13 @@ function setFortnoxConnectionState(isConnected) {
   startButton.disabled = !isConnected;
   disconnectButton.disabled = !isConnected;
   connectionLabel.textContent = isConnected ? 'Fortnox is connected' : 'Fortnox is not connected';
+}
+
+function setAccountMenuUser(user) {
+  accountMenu.hidden = false;
+  if (accountMenuInitial && user?.email) {
+    accountMenuInitial.textContent = user.email.trim().charAt(0).toUpperCase();
+  }
 }
 
 async function apiRequest(path, options = {}) {
@@ -64,9 +76,11 @@ async function initializeDemoPage() {
   }
 
   try {
-    await apiRequest('/auth/me');
+    const user = await apiRequest('/auth/me');
     const status = await apiRequest('/fortnox/status');
     const params = new URLSearchParams(window.location.search);
+
+    setAccountMenuUser(user);
 
     if (params.get('fortnox') === 'connected') {
       setDemoStatus('Fortnox connected. You can start the demo now.');
@@ -80,6 +94,32 @@ async function initializeDemoPage() {
   } catch (error) {
     signedOutRedirect();
   }
+}
+
+if (accountMenuButton && accountMenuPanel) {
+  accountMenuButton.addEventListener('click', () => {
+    const isOpen = accountMenuPanel.hidden;
+    accountMenuPanel.hidden = !isOpen;
+    accountMenuButton.setAttribute('aria-expanded', String(isOpen));
+  });
+}
+
+document.addEventListener('click', (event) => {
+  if (!accountMenu || !accountMenuButton || !accountMenuPanel || accountMenu.hidden) {
+    return;
+  }
+
+  if (!accountMenu.contains(event.target)) {
+    accountMenuPanel.hidden = true;
+    accountMenuButton.setAttribute('aria-expanded', 'false');
+  }
+});
+
+if (accountSignOutButton) {
+  accountSignOutButton.addEventListener('click', () => {
+    localStorage.removeItem(tokenStorageKey);
+    window.location.href = 'index.html#connect';
+  });
 }
 
 connectButton.addEventListener('click', async () => {
