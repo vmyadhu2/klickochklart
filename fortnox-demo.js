@@ -1,5 +1,6 @@
 const apiBaseUrl = (window.KOK_API_BASE || 'http://localhost:3000').replace(/\/$/, '');
 const tokenStorageKey = 'kok_access_token';
+const userEmailStorageKey = 'kok_user_email';
 const connectButton = document.getElementById('demo-connect-button');
 const startButton = document.getElementById('demo-start-button');
 const disconnectButton = document.getElementById('demo-disconnect-button');
@@ -33,9 +34,18 @@ function setFortnoxConnectionState(isConnected) {
 }
 
 function setAccountMenuUser(user) {
+  document.documentElement.classList.add('has-session');
   accountMenu.hidden = false;
   if (accountMenuInitial && user?.email) {
     accountMenuInitial.textContent = user.email.trim().charAt(0).toUpperCase();
+    localStorage.setItem(userEmailStorageKey, user.email);
+  }
+}
+
+function applyCachedAccountInitial() {
+  const email = localStorage.getItem(userEmailStorageKey);
+  if (accountMenuInitial && email) {
+    accountMenuInitial.textContent = email.trim().charAt(0).toUpperCase();
   }
 }
 
@@ -65,6 +75,8 @@ async function apiRequest(path, options = {}) {
 
 function signedOutRedirect() {
   localStorage.removeItem(tokenStorageKey);
+  localStorage.removeItem(userEmailStorageKey);
+  document.documentElement.classList.remove('has-session');
   window.location.href = 'index.html#connect';
 }
 
@@ -118,6 +130,8 @@ document.addEventListener('click', (event) => {
 if (accountSignOutButton) {
   accountSignOutButton.addEventListener('click', () => {
     localStorage.removeItem(tokenStorageKey);
+    localStorage.removeItem(userEmailStorageKey);
+    document.documentElement.classList.remove('has-session');
     window.location.href = 'index.html#connect';
   });
 }
@@ -211,4 +225,5 @@ startButton.addEventListener('click', async () => {
   }
 });
 
+applyCachedAccountInitial();
 initializeDemoPage();

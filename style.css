@@ -131,6 +131,15 @@ img {
   margin-left: 18px;
 }
 
+.signed-in-only,
+html.has-session .signed-out-only {
+  display: none !important;
+}
+
+html.has-session .signed-in-only {
+  display: block !important;
+}
+
 .account-menu-button {
   width: 42px;
   height: 42px;
@@ -810,8 +819,7 @@ h3 {
   gap: 16px;
 }
 
-.auth-form[hidden],
-.connection-panel[hidden] {
+.auth-form[hidden] {
   display: none !important;
 }
 
@@ -851,33 +859,6 @@ h3 {
 
 .reset-heading strong {
   font-size: 1.05rem;
-}
-
-.connection-panel {
-  display: grid;
-  gap: 14px;
-  margin-top: 22px;
-  padding: 18px;
-  background: #f7f8f4;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-}
-
-.connection-panel strong,
-.connection-panel span {
-  display: block;
-}
-
-.connection-panel span {
-  margin-top: 4px;
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.connected-message {
-  margin: 0;
-  color: var(--primary-dark);
-  font-weight: 800;
 }
 
 .text-button {

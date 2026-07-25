@@ -8,6 +8,13 @@
   <meta name="theme-color" content="#0e3b43" />
   <title>Klick och Klart | Try demo</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <script>
+    try {
+      if (localStorage.getItem('kok_access_token')) {
+        document.documentElement.classList.add('has-session');
+      }
+    } catch (error) {}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -25,7 +32,7 @@
         <a class="nav-cta" href="index.html">Home</a>
       </nav>
 
-      <div id="account-menu" class="account-menu" hidden>
+      <div id="account-menu" class="account-menu signed-in-only">
         <button id="account-menu-button" class="account-menu-button" type="button" aria-expanded="false" aria-controls="account-menu-panel">
           <span id="account-menu-initial">K</span>
         </button>
@@ -88,6 +95,6 @@
   <script>
     window.KOK_API_BASE = "https://klickochklart-backend.onrender.com";
   </script>
-  <script src="fortnox-demo.js?v=4"></script>
+  <script src="fortnox-demo.js?v=5"></script>
 </body>
 </html>

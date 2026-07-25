@@ -34,13 +34,12 @@ document.querySelectorAll('.reveal').forEach((element) => {
 
 const apiBaseUrl = (window.KOK_API_BASE || 'http://localhost:3000').replace(/\/$/, '');
 const tokenStorageKey = 'kok_access_token';
+const userEmailStorageKey = 'kok_user_email';
 const authTabs = document.querySelectorAll('.auth-tab');
 const authForms = document.querySelectorAll('[data-auth-form]');
+const authCard = document.getElementById('auth-card');
 const signupForm = document.getElementById('signup-form');
 const signinForm = document.getElementById('signin-form');
-const connectPanel = document.getElementById('connect-panel');
-const connectButton = document.getElementById('connect-fortnox-button');
-const connectedMessage = document.getElementById('fortnox-connected-message');
 const accountMenu = document.getElementById('account-menu');
 const accountMenuButton = document.getElementById('account-menu-button');
 const accountMenuPanel = document.getElementById('account-menu-panel');
@@ -54,18 +53,19 @@ function setAuthStatus(message) {
   }
 }
 
+function applyCachedAccountInitial() {
+  const email = localStorage.getItem(userEmailStorageKey);
+  if (accountMenuInitial && email) {
+    accountMenuInitial.textContent = email.trim().charAt(0).toUpperCase();
+  }
+}
+
 function setSignedOutState() {
   localStorage.removeItem(tokenStorageKey);
-  if (connectPanel) {
-    connectPanel.hidden = true;
-  }
-  if (connectButton) {
-    connectButton.hidden = false;
-    connectButton.disabled = false;
-    connectButton.textContent = 'Connect Fortnox';
-  }
-  if (connectedMessage) {
-    connectedMessage.hidden = true;
+  localStorage.removeItem(userEmailStorageKey);
+  document.documentElement.classList.remove('has-session');
+  if (authCard) {
+    authCard.hidden = false;
   }
   if (accountMenu) {
     accountMenu.hidden = true;
@@ -83,29 +83,22 @@ function setSignedOutState() {
 }
 
 function setSignedInState(user, fortnoxStatus) {
+  document.documentElement.classList.add('has-session');
+  if (authCard) {
+    authCard.hidden = true;
+  }
   authForms.forEach((form) => {
     form.hidden = true;
   });
   authTabs.forEach((tab) => {
     tab.hidden = true;
   });
-  if (connectPanel) {
-    connectPanel.hidden = true;
-  }
-  if (connectButton) {
-    const isFortnoxConnected = Boolean(fortnoxStatus?.connected);
-    connectButton.hidden = false;
-    connectButton.disabled = isFortnoxConnected;
-    connectButton.textContent = isFortnoxConnected ? 'Fortnox connected' : 'Connect Fortnox';
-  }
-  if (connectedMessage) {
-    connectedMessage.hidden = !fortnoxStatus?.connected;
-  }
   if (accountMenu) {
     accountMenu.hidden = false;
   }
   if (accountMenuInitial && user?.email) {
     accountMenuInitial.textContent = user.email.trim().charAt(0).toUpperCase();
+    localStorage.setItem(userEmailStorageKey, user.email);
   }
 }
 
@@ -147,9 +140,6 @@ function setAuthMode(mode, clearStatus = true) {
       form.reset();
     }
   });
-  if (connectPanel) {
-    connectPanel.hidden = true;
-  }
   if (clearStatus) {
     setAuthStatus('');
   }
@@ -268,24 +258,11 @@ if (signinForm) {
         }),
       });
       localStorage.setItem(tokenStorageKey, auth.access_token);
+      if (auth.user?.email) {
+        localStorage.setItem(userEmailStorageKey, auth.user.email);
+      }
       signinForm.reset();
       window.location.href = `${window.location.pathname}?auth=signed-in`;
-    } catch (error) {
-      setAuthStatus(error.message);
-    }
-  });
-}
-
-if (connectButton) {
-  connectButton.addEventListener('click', async () => {
-    if (connectButton.disabled) {
-      return;
-    }
-
-    setAuthStatus('Opening Fortnox authorization...');
-    try {
-      const data = await apiRequest('/auth/fortnox/start');
-      window.location.href = data.authorization_url;
     } catch (error) {
       setAuthStatus(error.message);
     }
@@ -330,6 +307,7 @@ async function initializeAuthPage() {
   }
 }
 
+applyCachedAccountInitial();
 initializeAuthPage();
 
 document.getElementById('current-year').textContent = new Date().getFullYear();

@@ -7,6 +7,13 @@
   <meta name="theme-color" content="#0e3b43" />
   <title>Klick och Klart | Fortnox Automation Services</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <script>
+    try {
+      if (localStorage.getItem('kok_access_token')) {
+        document.documentElement.classList.add('has-session');
+      }
+    } catch (error) {}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -33,7 +40,7 @@
         <a class="nav-cta" href="#contact">Automation request</a>
       </nav>
 
-      <div id="account-menu" class="account-menu" hidden>
+      <div id="account-menu" class="account-menu signed-in-only">
         <button id="account-menu-button" class="account-menu-button" type="button" aria-expanded="false" aria-controls="account-menu-panel">
           <span id="account-menu-initial">K</span>
         </button>
@@ -56,9 +63,6 @@
             Klick och Klart helps small businesses find one painful manual routine, automate it carefully,
             and use those lessons to build a focused Fortnox automation platform over time.
           </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#connect">Connect Fortnox</a>
-          </div>
           <div class="hero-notes" aria-label="Service highlights">
             <span>Invoice workflows</span>
             <span>Reports</span>
@@ -183,7 +187,7 @@
           </p>
         </div>
 
-        <div class="connect-card reveal">
+        <div id="auth-card" class="connect-card reveal signed-out-only">
           <div class="auth-tabs" role="tablist" aria-label="Account action">
             <button class="auth-tab active" type="button" data-auth-mode="signup">Create account</button>
             <button class="auth-tab" type="button" data-auth-mode="signin">Sign in</button>
@@ -305,6 +309,6 @@
   <script>
     window.KOK_API_BASE = "https://klickochklart-backend.onrender.com";
   </script>
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>
