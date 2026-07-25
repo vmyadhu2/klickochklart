@@ -341,8 +341,8 @@ html.has-session .signed-in-only {
   box-shadow: 0 12px 22px rgba(14, 46, 53, 0.06);
   font-weight: 700;
   opacity: 0;
-  transform: translateY(14px);
-  animation: demoLogIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  transform: translateY(16px) scale(0.98);
+  animation: demoLogIn 1.25s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .demo-log-item::before {
@@ -377,9 +377,13 @@ html.has-session .signed-in-only {
 }
 
 @keyframes demoLogIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -544,7 +548,7 @@ h3 {
 }
 
 .demo-download-link.is-ready {
-  animation: downloadReadyIn 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: downloadReadyIn 2.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .demo-info-note {
