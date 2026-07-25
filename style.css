@@ -147,6 +147,17 @@ img {
   margin-left: 18px;
 }
 
+.demo-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.demo-header-actions .account-menu {
+  margin-left: 0;
+}
+
 .signed-in-only,
 html.has-session .signed-out-only {
   display: none !important;
@@ -204,10 +215,6 @@ html.has-session .signed-in-only {
 .account-menu-panel a:hover,
 .account-menu-panel button:hover {
   background: #edf5f0;
-}
-
-.demo-nav {
-  gap: 22px;
 }
 
 .demo-hero {
@@ -549,6 +556,10 @@ h3 {
 
 .demo-download-link.is-ready {
   animation: downloadReadyIn 2.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.demo-download-link[hidden] {
+  display: none !important;
 }
 
 .demo-info-note {
@@ -1173,21 +1184,6 @@ h3 {
 
   .main-nav.open {
     display: flex;
-  }
-
-  .demo-nav {
-    position: static;
-    min-height: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0;
-    background: transparent;
-  }
-
-  .demo-nav a {
-    padding: 10px 14px;
-    border-bottom: 0;
   }
 
   .main-nav a {
