@@ -2,9 +2,11 @@ const apiBaseUrl = (window.KOK_API_BASE || 'http://localhost:3000').replace(/\/$
 const tokenStorageKey = 'kok_access_token';
 const connectButton = document.getElementById('demo-connect-button');
 const startButton = document.getElementById('demo-start-button');
+const disconnectButton = document.getElementById('demo-disconnect-button');
 const downloadLink = document.getElementById('demo-download-link');
 const demoLog = document.getElementById('demo-log');
 const demoStatus = document.getElementById('demo-status');
+const connectionLabel = document.getElementById('demo-connection-label');
 
 function setDemoStatus(message) {
   demoStatus.textContent = message;
@@ -16,6 +18,13 @@ function addDemoLog(message, status = 'running') {
   item.textContent = message;
   demoLog.appendChild(item);
   item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function setFortnoxConnectionState(isConnected) {
+  connectButton.disabled = isConnected;
+  startButton.disabled = !isConnected;
+  disconnectButton.disabled = !isConnected;
+  connectionLabel.textContent = isConnected ? 'Fortnox is connected' : 'Fortnox is not connected';
 }
 
 async function apiRequest(path, options = {}) {
@@ -64,8 +73,10 @@ async function initializeDemoPage() {
       window.history.replaceState({}, document.title, window.location.pathname);
     }
 
-    connectButton.hidden = Boolean(status.connected);
-    startButton.hidden = !status.connected;
+    setFortnoxConnectionState(Boolean(status.connected));
+    if (!status.connected) {
+      setDemoStatus('Connect Fortnox to activate the demo.');
+    }
   } catch (error) {
     signedOutRedirect();
   }
@@ -81,11 +92,30 @@ connectButton.addEventListener('click', async () => {
   }
 });
 
+disconnectButton.addEventListener('click', async () => {
+  setDemoStatus('Disconnecting Fortnox...');
+  disconnectButton.disabled = true;
+
+  try {
+    await apiRequest('/fortnox/connection', { method: 'DELETE' });
+    setFortnoxConnectionState(false);
+    demoLog.replaceChildren();
+    downloadLink.hidden = true;
+    downloadLink.removeAttribute('href');
+    setDemoStatus('Fortnox disconnected. Connect again to run the demo.');
+  } catch (error) {
+    setDemoStatus(error.message);
+    disconnectButton.disabled = false;
+  }
+});
+
 startButton.addEventListener('click', async () => {
   demoLog.replaceChildren();
   downloadLink.hidden = true;
   downloadLink.removeAttribute('href');
   startButton.disabled = true;
+  connectButton.disabled = true;
+  disconnectButton.disabled = true;
   setDemoStatus('Demo running...');
 
   try {
@@ -136,7 +166,8 @@ startButton.addEventListener('click', async () => {
     addDemoLog(error.message, 'error');
     setDemoStatus(error.message);
   } finally {
-    startButton.disabled = false;
+    const status = await apiRequest('/fortnox/status').catch(() => ({ connected: false }));
+    setFortnoxConnectionState(Boolean(status.connected));
   }
 });
 

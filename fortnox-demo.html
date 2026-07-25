@@ -6,42 +6,80 @@
   <meta name="description" content="Try a Klick och Klart Fortnox invoice automation demo." />
   <meta name="robots" content="noindex" />
   <meta name="theme-color" content="#0e3b43" />
-  <title>Klick och Klart | Fortnox Demo</title>
+  <title>Klick och Klart | Try demo</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="auth-page">
-  <main class="auth-page-shell demo-page-shell">
-    <section class="connect-card demo-page-card">
-      <a class="brand" href="index.html#connect" aria-label="Klick och Klart home">
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Klick och Klart home">
         <img class="brand-icon" src="icon.svg" alt="" width="40" height="40" />
         <span>Klick och Klart</span>
       </a>
 
-      <div class="reset-heading page-reset-heading">
-        <strong>Fortnox invoice demo</strong>
-        <span>Connect Fortnox, read up to 50 invoices, and generate a CSV file.</span>
+      <nav class="main-nav demo-nav" aria-label="Demo navigation">
+        <a href="index.html#automations">Automations</a>
+        <a href="profile-settings.html">Profile settings</a>
+        <a class="nav-cta" href="index.html#contact">Automation request</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="demo-hero section">
+      <div class="container demo-hero-grid">
+        <div class="demo-hero-copy reveal is-visible">
+          <p class="eyebrow">Try demo</p>
+          <h1>Run a Fortnox invoice automation demo.</h1>
+          <p class="hero-text">Connect Fortnox, read invoice data, and download a ready CSV for the first 50 customer invoices.</p>
+        </div>
+
+        <div class="demo-status-panel">
+          <span>Automation scope</span>
+          <strong>50 invoices max</strong>
+          <p>Invoice number, OCR, customer, dates, totals, balance, currency, and paid status.</p>
+        </div>
       </div>
+    </section>
 
-      <div class="demo-actions">
-        <button id="demo-connect-button" class="button button-primary" type="button" hidden>Connect Fortnox</button>
-        <button id="demo-start-button" class="button button-primary" type="button" hidden>Start demo</button>
-        <a id="demo-download-link" class="button button-secondary" download hidden>Download CSV</a>
+    <section class="demo-workspace-section section">
+      <div class="container demo-workspace">
+        <div class="demo-workspace-heading">
+          <p class="eyebrow">Live run</p>
+          <h2>Invoice CSV automation</h2>
+          <p>Run the demo after Fortnox is connected. Each step appears as the backend finishes the work.</p>
+        </div>
+
+        <div class="demo-runner">
+          <div class="demo-control-panel">
+            <div>
+              <strong>Connection</strong>
+              <span id="demo-connection-label">Checking Fortnox...</span>
+            </div>
+
+            <div class="demo-actions">
+              <button id="demo-connect-button" class="button button-primary" type="button" disabled>Connect Fortnox</button>
+              <button id="demo-start-button" class="button button-primary" type="button" disabled>Start demo</button>
+              <button id="demo-disconnect-button" class="button button-secondary" type="button" disabled>Disconnect Fortnox</button>
+              <a id="demo-download-link" class="button button-secondary" download hidden>Download CSV</a>
+            </div>
+          </div>
+
+          <ol id="demo-log" class="demo-log" aria-live="polite"></ol>
+        </div>
+
+        <p id="demo-status" class="auth-status demo-page-status" role="status" aria-live="polite"></p>
       </div>
-
-      <ol id="demo-log" class="demo-log" aria-live="polite"></ol>
-
-      <a class="text-button" href="index.html#connect">Back to Klick och Klart</a>
-      <p id="demo-status" class="auth-status" role="status" aria-live="polite"></p>
     </section>
   </main>
 
   <script>
     window.KOK_API_BASE = "https://klickochklart-backend.onrender.com";
   </script>
-  <script src="fortnox-demo.js?v=1"></script>
+  <script src="fortnox-demo.js?v=3"></script>
 </body>
 </html>
