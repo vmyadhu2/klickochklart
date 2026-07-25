@@ -536,6 +536,13 @@ h3 {
   border-color: var(--line);
 }
 
+.button-small {
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
 .hero-notes {
   display: flex;
   flex-wrap: wrap;

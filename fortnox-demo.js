@@ -33,6 +33,19 @@ function setFortnoxConnectionState(isConnected) {
   connectionLabel.textContent = isConnected ? 'Fortnox is connected' : 'Fortnox is not connected';
 }
 
+function setDownloadReady(isReady, href = '', filename = '') {
+  if (isReady) {
+    downloadLink.href = href;
+    downloadLink.download = filename;
+    downloadLink.setAttribute('aria-disabled', 'false');
+    return;
+  }
+
+  downloadLink.removeAttribute('href');
+  downloadLink.removeAttribute('download');
+  downloadLink.setAttribute('aria-disabled', 'true');
+}
+
 function setAccountMenuUser(user) {
   document.documentElement.classList.add('has-session');
   accountMenu.hidden = false;
@@ -154,8 +167,7 @@ disconnectButton.addEventListener('click', async () => {
     await apiRequest('/fortnox/connection', { method: 'DELETE' });
     setFortnoxConnectionState(false);
     demoLog.replaceChildren();
-    downloadLink.hidden = true;
-    downloadLink.removeAttribute('href');
+    setDownloadReady(false);
     setDemoStatus('Fortnox disconnected. Connect again to run the demo.');
   } catch (error) {
     setDemoStatus(error.message);
@@ -165,8 +177,7 @@ disconnectButton.addEventListener('click', async () => {
 
 startButton.addEventListener('click', async () => {
   demoLog.replaceChildren();
-  downloadLink.hidden = true;
-  downloadLink.removeAttribute('href');
+  setDownloadReady(false);
   startButton.disabled = true;
   connectButton.disabled = true;
   disconnectButton.disabled = true;
@@ -209,9 +220,7 @@ startButton.addEventListener('click', async () => {
           setDemoStatus(event.message);
         } else if (event.type === 'result') {
           const blob = new Blob([event.csv], { type: 'text/csv;charset=utf-8' });
-          downloadLink.href = URL.createObjectURL(blob);
-          downloadLink.download = event.filename;
-          downloadLink.hidden = false;
+          setDownloadReady(true, URL.createObjectURL(blob), event.filename);
           setDemoStatus('CSV is ready to download.');
         }
       });
@@ -222,6 +231,12 @@ startButton.addEventListener('click', async () => {
   } finally {
     const status = await apiRequest('/fortnox/status').catch(() => ({ connected: false }));
     setFortnoxConnectionState(Boolean(status.connected));
+  }
+});
+
+downloadLink.addEventListener('click', (event) => {
+  if (downloadLink.getAttribute('aria-disabled') === 'true') {
+    event.preventDefault();
   }
 });
 
