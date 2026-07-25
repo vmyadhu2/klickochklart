@@ -37,13 +37,16 @@ function setDownloadReady(isReady, href = '', filename = '') {
   if (isReady) {
     downloadLink.href = href;
     downloadLink.download = filename;
-    downloadLink.setAttribute('aria-disabled', 'false');
+    downloadLink.hidden = false;
+    downloadLink.classList.remove('is-ready');
+    requestAnimationFrame(() => downloadLink.classList.add('is-ready'));
     return;
   }
 
   downloadLink.removeAttribute('href');
   downloadLink.removeAttribute('download');
-  downloadLink.setAttribute('aria-disabled', 'true');
+  downloadLink.classList.remove('is-ready');
+  downloadLink.hidden = true;
 }
 
 function setAccountMenuUser(user) {
@@ -231,12 +234,6 @@ startButton.addEventListener('click', async () => {
   } finally {
     const status = await apiRequest('/fortnox/status').catch(() => ({ connected: false }));
     setFortnoxConnectionState(Boolean(status.connected));
-  }
-});
-
-downloadLink.addEventListener('click', (event) => {
-  if (downloadLink.getAttribute('aria-disabled') === 'true') {
-    event.preventDefault();
   }
 });
 

@@ -543,6 +543,28 @@ h3 {
   font-size: 0.9rem;
 }
 
+.demo-download-link.is-ready {
+  animation: downloadReadyIn 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.demo-info-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+@keyframes downloadReadyIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .hero-notes {
   display: flex;
   flex-wrap: wrap;

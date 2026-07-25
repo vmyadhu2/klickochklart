@@ -81,8 +81,10 @@
               <button id="demo-connect-button" class="button button-primary" type="button" disabled>Connect Fortnox</button>
               <button id="demo-start-button" class="button button-primary" type="button" disabled>Start demo</button>
               <button id="demo-disconnect-button" class="button button-secondary" type="button" disabled>Disconnect Fortnox</button>
-              <a id="demo-download-link" class="button button-secondary button-small" aria-disabled="true" download>Download CSV</a>
+              <a id="demo-download-link" class="button button-secondary button-small demo-download-link" download hidden>Download CSV</a>
             </div>
+
+            <p class="demo-info-note">This demo reads up to 50 Fortnox invoices, extracts the key invoice fields, and prepares a CSV file for download after the backend finishes.</p>
           </div>
 
           <ol id="demo-log" class="demo-log" aria-live="polite"></ol>
@@ -96,6 +98,6 @@
   <script>
     window.KOK_API_BASE = "https://klickochklart-backend.onrender.com";
   </script>
-  <script src="fortnox-demo.js?v=7"></script>
+  <script src="fortnox-demo.js?v=8"></script>
 </body>
 </html>
