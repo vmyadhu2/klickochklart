@@ -135,6 +135,13 @@ img {
   color: var(--primary);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: auto;
+}
+
 .nav-cta {
   padding: 10px 16px;
   color: #ffffff !important;
@@ -267,24 +274,26 @@ html.has-session .signed-in-only {
 }
 
 .demo-down-button {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   display: inline-grid;
   place-items: center;
-  margin-top: 6px;
-  color: #ffffff;
-  background: var(--primary-dark);
-  border-radius: 50%;
-  font-size: 1.2rem;
+  margin-top: 8px;
+  color: var(--primary-dark);
+  background: #ffffff;
+  border: 2px solid var(--primary-dark);
+  border-radius: 12px;
+  box-shadow: 0 10px 22px rgba(14, 46, 53, 0.12);
+  font-size: 1.35rem;
   font-weight: 800;
   line-height: 1;
-  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .demo-down-button:hover,
 .demo-down-button:focus-visible {
   color: #ffffff;
-  background: var(--primary);
+  background: var(--primary-dark);
   box-shadow: 0 12px 24px rgba(14, 118, 109, 0.24);
   transform: translateY(2px);
 }
@@ -1192,6 +1201,11 @@ h3 {
 
   .menu-button {
     display: block;
+  }
+
+  .header-actions {
+    margin-left: auto;
+    gap: 14px;
   }
 
   .main-nav {
