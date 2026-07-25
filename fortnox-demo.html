@@ -10,6 +10,7 @@
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <script>
     try {
+      document.documentElement.classList.add('app-loading');
       if (localStorage.getItem('kok_access_token')) {
         document.documentElement.classList.add('has-session');
       }
@@ -95,6 +96,6 @@
   <script>
     window.KOK_API_BASE = "https://klickochklart-backend.onrender.com";
   </script>
-  <script src="fortnox-demo.js?v=5"></script>
+  <script src="fortnox-demo.js?v=6"></script>
 </body>
 </html>

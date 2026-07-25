@@ -33,6 +33,22 @@ body {
   line-height: 1.6;
 }
 
+html.app-loading body > * {
+  opacity: 0;
+}
+
+html.app-loading body::before {
+  content: "Loading...";
+  position: fixed;
+  z-index: 3000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--primary-dark);
+  background: var(--bg);
+  font-weight: 800;
+}
+
 body.menu-open {
   overflow: hidden;
 }

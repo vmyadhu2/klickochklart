@@ -226,4 +226,6 @@ startButton.addEventListener('click', async () => {
 });
 
 applyCachedAccountInitial();
-initializeDemoPage();
+initializeDemoPage().finally(() => {
+  document.documentElement.classList.remove('app-loading');
+});

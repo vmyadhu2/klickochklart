@@ -308,6 +308,8 @@ async function initializeAuthPage() {
 }
 
 applyCachedAccountInitial();
-initializeAuthPage();
+initializeAuthPage().finally(() => {
+  document.documentElement.classList.remove('app-loading');
+});
 
 document.getElementById('current-year').textContent = new Date().getFullYear();
