@@ -181,6 +181,66 @@ img {
   background: #edf5f0;
 }
 
+.demo-page-shell {
+  padding-block: 56px;
+}
+
+.demo-page-card {
+  width: min(720px, calc(100vw - 32px));
+}
+
+.demo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.demo-log {
+  display: grid;
+  gap: 10px;
+  min-height: 280px;
+  max-height: 360px;
+  margin: 24px 0 18px;
+  padding: 18px;
+  overflow: auto;
+  list-style: none;
+  background: #f7faf7;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.demo-log-item {
+  padding: 12px 14px;
+  color: var(--text);
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  font-weight: 700;
+  animation: demoLogIn 0.22s ease both;
+}
+
+.demo-log-item.done {
+  border-left-color: #2f7d55;
+}
+
+.demo-log-item.error {
+  border-left-color: #b42318;
+  color: #8f1f13;
+}
+
+@keyframes demoLogIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .menu-button {
   display: none;
   width: 44px;

@@ -90,7 +90,7 @@ function setSignedInState(user, fortnoxStatus) {
     tab.hidden = true;
   });
   if (connectPanel) {
-    connectPanel.hidden = false;
+    connectPanel.hidden = true;
   }
   if (connectButton) {
     const isFortnoxConnected = Boolean(fortnoxStatus?.connected);
