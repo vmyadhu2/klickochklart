@@ -312,6 +312,88 @@ html.has-session .signed-in-only {
   background: #ffffff;
 }
 
+.about-page-nav {
+  margin-left: auto;
+}
+
+.about-page-hero {
+  min-height: 100vh;
+  padding-top: 150px;
+  background:
+    linear-gradient(115deg, rgba(247, 248, 244, 0.94), rgba(237, 247, 242, 0.9)),
+    url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=80") center / cover;
+}
+
+.about-page-stack {
+  display: grid;
+  gap: 44px;
+}
+
+.about-page-main {
+  max-width: 920px;
+}
+
+.about-page-copy {
+  display: grid;
+  gap: 16px;
+  max-width: 840px;
+}
+
+.about-page-copy p {
+  margin: 0;
+  color: #40514d;
+  font-size: 1rem;
+}
+
+.founder-profile {
+  max-width: 780px;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 24px;
+  align-items: center;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.96);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.founder-profile-image {
+  width: 180px;
+  height: 180px;
+  aspect-ratio: 1;
+  display: block;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.founder-label {
+  margin: 0 0 4px;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.founder-profile h2 {
+  margin-bottom: 6px;
+  font-size: 1.45rem;
+}
+
+.founder-role {
+  margin-bottom: 8px;
+  color: var(--primary-dark);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.founder-profile p:not(.founder-label):not(.founder-role) {
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 .demo-workspace {
   display: grid;
   gap: 28px;
@@ -1185,6 +1267,11 @@ h3 {
     padding-top: 130px;
   }
 
+  .about-page-hero {
+    min-height: auto;
+    padding-top: 130px;
+  }
+
   .demo-status-panel {
     max-width: 520px;
   }
@@ -1275,6 +1362,19 @@ h3 {
 
   .demo-hero {
     padding-top: 118px;
+  }
+
+  .about-page-hero {
+    padding-top: 118px;
+  }
+
+  .about-page-nav {
+    gap: 14px;
+  }
+
+  .founder-profile {
+    grid-template-columns: 1fr;
+    justify-items: start;
   }
 
   h1 {
